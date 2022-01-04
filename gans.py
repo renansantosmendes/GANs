@@ -57,30 +57,30 @@ def weights_init(layers):
 
 
 class Discriminator(nn.Module):
-    def __init__(self, image_channels, discriminator_hidden_layers_size):
+    def __init__(self, image_channels, discriminator_hidden_layer_size):
         super(Discriminator, self).__init__()
         self.main = nn.Sequential(
             # 1st layer
             nn.Conv2d(image_channels,
-                      discriminator_hidden_layers_size, 4, 2, 1, bias=False),
+                      discriminator_hidden_layer_size, 4, 2, 1, bias=False),
             nn.LeakyReLU(0.2, inplace=True),
             # 2nd layer
-            nn.Conv2d(discriminator_hidden_layers_size,
-                      discriminator_hidden_layers_size * 2, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(discriminator_hidden_layers_size * 2),
+            nn.Conv2d(discriminator_hidden_layer_size,
+                      discriminator_hidden_layer_size * 2, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(discriminator_hidden_layer_size * 2),
             nn.LeakyReLU(0.2, inplace=True),
             # 3rd layer
-            nn.Conv2d(discriminator_hidden_layers_size * 2,
-                      discriminator_hidden_layers_size * 4, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(discriminator_hidden_layers_size * 4),
+            nn.Conv2d(discriminator_hidden_layer_size * 2,
+                      discriminator_hidden_layer_size * 4, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(discriminator_hidden_layer_size * 4),
             nn.LeakyReLU(0.2, inplace=True),
             # 4th layer
-            nn.Conv2d(discriminator_hidden_layers_size * 4,
-                      discriminator_hidden_layers_size * 8, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(discriminator_hidden_layers_size * 8),
+            nn.Conv2d(discriminator_hidden_layer_size * 4,
+                      discriminator_hidden_layer_size * 8, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(discriminator_hidden_layer_size * 8),
             nn.LeakyReLU(0.2, inplace=True),
             # output layer
-            nn.Conv2d(discriminator_hidden_layers_size * 8, 1, 4, 1, 0, bias=False),
+            nn.Conv2d(discriminator_hidden_layer_size * 8, 1, 4, 1, 0, bias=False),
             nn.Sigmoid()
             )
 
